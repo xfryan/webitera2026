@@ -3,15 +3,26 @@ layout: base.njk
 lang: en
 title: Blog
 description: "Posts on organizational agility, leadership and transformation — from practice, not the manual."
+pagination:
+  data: collections.posts_en
+  size: 9
+  alias: posts
+  reverse: true
+permalink: "/en/posts/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}"
 ---
 <div class="wrap wide">
   <span class="kicker reveal visible">Resources</span>
   <h1 class="reveal visible" style="text-transform:uppercase">Blog</h1>
   <p class="lead" style="margin-top:14px">Posts on organizational agility, leadership and transformation — from practice, not the manual.</p>
 
-  {% if collections.posts_en.length %}
+  {% if posts.length %}
+  <div class="view-toggle">
+    <span class="view-toggle-active">Cards</span>
+    <a href="/en/posts/list/">List only</a>
+  </div>
+
   <div class="post-grid">
-    {% for post in collections.posts_en | reverse %}
+    {% for post in posts %}
     <a class="panel post-card reveal visible" href="{{ post.url }}">
       {% if post.data.image %}<img src="{{ post.data.image }}" alt="{{ post.data.imageAlt or '' }}">{% endif %}
       <div class="post-card-body">
@@ -22,6 +33,14 @@ description: "Posts on organizational agility, leadership and transformation —
     </a>
     {% endfor %}
   </div>
+
+  {% if pagination.hrefs.length > 1 %}
+  <div class="pagination" aria-label="Blog pagination">
+    {% if pagination.href.previous %}<a class="btn btn-outline" href="{{ pagination.href.previous }}">← Newer</a>{% endif %}
+    <span class="pagination-status">Page {{ pagination.pageNumber + 1 }} of {{ pagination.hrefs.length }}</span>
+    {% if pagination.href.next %}<a class="btn btn-outline" href="{{ pagination.href.next }}">Older →</a>{% endif %}
+  </div>
+  {% endif %}
   {% else %}
   <p class="dim" style="margin-top:30px">English posts are on the way — for now you can read our latest article <a href="/posts/">in Spanish</a>.</p>
   {% endif %}
