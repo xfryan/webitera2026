@@ -1,1 +1,48 @@
+---
+layout: base.njk
+lang: en
+title: Blog — List
+description: "All blog posts in a compact view, by date and category."
+pagination:
+  data: collections.posts_en
+  size: 20
+  alias: posts
+  reverse: true
+permalink: "/en/posts/list/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}"
+---
+<div class="wrap wide">
+  <span class="kicker reveal visible">Resources</span>
+  <h1 class="reveal visible" style="text-transform:uppercase">Blog</h1>
+  <p class="lead" style="margin-top:14px">All posts, in a compact view — no image or excerpt, so you can scan for a topic fast.</p>
 
+  {% if posts.length %}
+  <div class="view-toggle">
+    <a href="/en/posts/">Cards</a>
+    <span class="view-toggle-active">List only</span>
+  </div>
+
+  <ul class="post-list">
+    {% for post in posts %}
+    <li class="post-list-item">
+      <a href="{{ post.url }}">
+        <span class="post-list-date">{{ post.data.dateDisplay }}</span>
+        <span class="post-list-title">{{ post.data.title }}</span>
+        <span class="post-list-tags">
+          {% for t in post.data.tags %}{% if t != "posts_es" and t != "posts_en" %}<span class="tag-chip">{{ t }}</span>{% endif %}{% endfor %}
+        </span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+
+  {% if pagination.hrefs.length > 1 %}
+  <div class="pagination" aria-label="List pagination">
+    {% if pagination.href.previous %}<a class="btn btn-outline" href="{{ pagination.href.previous }}">← Newer</a>{% endif %}
+    <span class="pagination-status">Page {{ pagination.pageNumber + 1 }} of {{ pagination.hrefs.length }}</span>
+    {% if pagination.href.next %}<a class="btn btn-outline" href="{{ pagination.href.next }}">Older →</a>{% endif %}
+  </div>
+  {% endif %}
+  {% else %}
+  <p class="dim" style="margin-top:30px">English posts are on the way — for now you can read our latest article <a href="/posts/lista/">in Spanish</a>.</p>
+  {% endif %}
+</div>
