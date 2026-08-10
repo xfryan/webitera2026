@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="{{ description or 'Itera Consulting — Business meets agility®.' }}">
+<title>{{ title }} — Itera Consulting</title>
+<link rel="preconnect" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/blog.css">
+</head>
+<body>
+
+<div id="fallback-bg" aria-hidden="true"></div>
+<div id="vignette" aria-hidden="true"></div>
+
+{% if lang == 'en' %}{% include "nav-en.njk" %}{% else %}{% include "nav-es.njk" %}{% endif %}
+
+<main class="blog-main">
+  {{ content | safe }}
+</main>
+
+{% if lang == 'en' %}{% include "footer-en.njk" %}{% else %}{% include "footer-es.njk" %}{% endif %}
+
+<script src="/assets/js/site.js"></script>
+</body>
+</html>

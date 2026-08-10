@@ -1,0 +1,30 @@
+---
+layout: base.njk
+---
+<article class="post">
+  <div class="wrap">
+    <a class="back-link" href="{{ lang == 'en' and '/en/posts/' or '/posts/' }}">← {{ lang == 'en' and 'Back to blog' or 'Volver al blog' }}</a>
+
+    <div class="post-header" style="margin-top:18px">
+      <p class="post-meta">{{ dateDisplay }}</p>
+      <h1>{{ title }}</h1>
+    </div>
+
+    {% if image %}
+    <div class="post-cover">
+      <img src="{{ image }}" alt="{{ imageAlt or '' }}" width="1024" height="1536">
+    </div>
+    {% endif %}
+
+    <div class="post-body">
+      {{ content | safe }}
+    </div>
+
+    <div class="post-footer">
+      <div>
+        {% for t in tags %}{% if t != "posts_es" and t != "posts_en" %}<span class="tag-chip">{{ t }}</span>{% endif %}{% endfor %}
+      </div>
+      <a class="back-link" href="{{ lang == 'en' and '/en/posts/' or '/posts/' }}">← {{ lang == 'en' and 'Back to blog' or 'Volver al blog' }}</a>
+    </div>
+  </div>
+</article>

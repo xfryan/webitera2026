@@ -1,0 +1,28 @@
+---
+layout: base.njk
+lang: en
+title: Blog
+description: "Posts on organizational agility, leadership and transformation — from practice, not the manual."
+---
+<div class="wrap wide">
+  <span class="kicker reveal visible">Resources</span>
+  <h1 class="reveal visible" style="text-transform:uppercase">Blog</h1>
+  <p class="lead" style="margin-top:14px">Posts on organizational agility, leadership and transformation — from practice, not the manual.</p>
+
+  {% if collections.posts_en.length %}
+  <div class="post-grid">
+    {% for post in collections.posts_en | reverse %}
+    <a class="panel post-card reveal visible" href="{{ post.url }}">
+      {% if post.data.image %}<img src="{{ post.data.image }}" alt="{{ post.data.imageAlt or '' }}">{% endif %}
+      <div class="post-card-body">
+        <p class="post-meta">{{ post.data.dateDisplay }}</p>
+        <h3>{{ post.data.title }}</h3>
+        <p>{{ post.data.excerpt }}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="dim" style="margin-top:30px">English posts are on the way — for now you can read our latest article <a href="/posts/">in Spanish</a>.</p>
+  {% endif %}
+</div>

@@ -1,0 +1,15 @@
+{
+  "name": "itera-blog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Blog de Itera Consulting — Eleventy, ES/EN, deploy a GitHub Pages",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "new-post-es": "node scripts/new-post.js es",
+    "new-post-en": "node scripts/new-post.js en"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}
