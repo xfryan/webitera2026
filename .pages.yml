@@ -1,0 +1,106 @@
+media:
+  input: src/assets/img/blog
+  output: /assets/img/blog
+
+content:
+  - name: posts_es
+    label: "Blog — Español"
+    type: collection
+    path: src/posts
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    view:
+      fields: [title, date, excerpt]
+    fields:
+      - name: title
+        label: Título
+        type: string
+        required: true
+      - name: date
+        label: Fecha
+        type: date
+        required: true
+      - name: dateDisplay
+        label: Fecha (texto para mostrar, ej. "30 de julio de 2026")
+        type: string
+        required: true
+      - name: lang
+        label: Idioma
+        type: string
+        default: es
+        hidden: true
+      - name: layout
+        label: Layout
+        type: string
+        default: post.njk
+        hidden: true
+      - name: image
+        label: Imagen destacada
+        type: image
+        required: true
+      - name: imageAlt
+        label: Texto alternativo de la imagen
+        type: string
+      - name: excerpt
+        label: Bajada (para la tarjeta del listado)
+        type: text
+        required: true
+      - name: tags
+        label: Categorías
+        type: string
+        list: true
+        default: [posts_es]
+      - name: body
+        label: Contenido
+        type: rich-text
+
+  - name: posts_en
+    label: "Blog — English"
+    type: collection
+    path: src/en/posts
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    view:
+      fields: [title, date, excerpt]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+        required: true
+      - name: dateDisplay
+        label: "Date (display text, e.g. \"July 30, 2026\")"
+        type: string
+        required: true
+      - name: lang
+        label: Language
+        type: string
+        default: en
+        hidden: true
+      - name: layout
+        label: Layout
+        type: string
+        default: post.njk
+        hidden: true
+      - name: image
+        label: Cover image
+        type: image
+        required: true
+      - name: imageAlt
+        label: Image alt text
+        type: string
+      - name: excerpt
+        label: Excerpt (shown on the listing card)
+        type: text
+        required: true
+      - name: tags
+        label: Categories
+        type: string
+        list: true
+        default: [posts_en]
+      - name: body
+        label: Content
+        type: rich-text
