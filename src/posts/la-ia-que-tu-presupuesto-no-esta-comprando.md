@@ -25,6 +25,8 @@ Esa reunión no fue un accidente ni una falla de un equipo en particular. Fue el
 
 Gartner publicó recientemente esta pieza que apunta exactamente a esto, con una imagen deliberadamente simple: un átomo donde la inteligencia artificial generativa es apenas uno de los electrones que orbitan, junto a la optimización, la simulación, las reglas y heurísticas, el aprendizaje de máquina no generativo y los grafos.
 
+![Gartner: la inteligencia artificial no gira alrededor de la IA generativa — un átomo donde lo generativo es uno de varios electrones, junto a optimización, simulación, reglas/heurísticas, machine learning no generativo y grafos.](/assets/img/blog/gartner-atomo-ia.png)
+
 El título es una advertencia directa: la inteligencia artificial no gira alrededor de la inteligencia artificial generativa.
 
 El problema es que el vocabulario de moda se convirtió en criterio de selección. Cuando un directorio pregunta *"¿esto usa inteligencia artificial generativa?"* en vez de preguntar *"¿esto resuelve el problema que tenemos?"*, el proceso de compra empieza a seleccionar por marketing y no por adecuación. Y las herramientas que quedan afuera de ese filtro suelen ser, precisamente, las que llevan cuarenta años resolviendo los problemas más caros de la operación.
