@@ -130,3 +130,40 @@
 }
 .back-link{font-size:.9rem;color:var(--text-dim)}
 .back-link:hover{color:var(--green)}
+
+/* --- toggle tarjetas / listado --- */
+.view-toggle{
+  display:flex;gap:16px;align-items:center;
+  margin:28px 0 6px;
+  font-size:.8rem;letter-spacing:.4px;text-transform:uppercase;
+}
+.view-toggle a{color:var(--text-dim)}
+.view-toggle a:hover{color:var(--green)}
+.view-toggle-active{color:var(--green);font-weight:700}
+
+/* --- paginación (tarjetas y listado) --- */
+.pagination{
+  display:flex;align-items:center;justify-content:center;gap:22px;
+  margin-top:48px;flex-wrap:wrap;
+}
+.pagination-status{font-size:.85rem;color:var(--text-dim)}
+
+/* --- vista de listado compacta --- */
+.post-list{list-style:none;margin:30px 0 0;padding:0}
+.post-list-item{border-bottom:1px solid var(--panel-border)}
+.post-list-item a{
+  display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+  padding:16px 4px;color:var(--text);
+}
+.post-list-item a:hover{color:var(--green)}
+.post-list-date{
+  font-size:.78rem;color:var(--text-dim);letter-spacing:.4px;text-transform:uppercase;
+  min-width:130px;
+}
+.post-list-title{flex:1;font-weight:700;min-width:200px}
+.post-list-tags{display:flex;gap:6px;flex-wrap:wrap}
+
+@media(max-width:600px){
+  .post-list-item a{flex-direction:column;align-items:flex-start;gap:6px}
+  .post-list-date{min-width:0}
+}
