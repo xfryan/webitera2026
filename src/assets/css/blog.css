@@ -10,6 +10,7 @@
 }
 .blog-main .wrap{max-width:760px}
 .blog-main .wrap.wide{max-width:var(--maxw)}
+.blog-main.post-page{padding:0}
 
 /* --- listado de posts (/posts/, /en/posts/) --- */
 .post-grid{
@@ -31,23 +32,61 @@
 .post-card p{font-size:.9rem;color:var(--text-dim)}
 .post-card:hover{border-color:var(--green-dim);transform:translateY(-3px)}
 
-/* --- post individual --- */
-.post-header{margin-bottom:34px}
-.post-header .post-meta{font-size:.85rem;color:var(--text-dim);letter-spacing:.4px;text-transform:uppercase;margin-bottom:14px}
-.post-header h1{
+/* --- post individual: imagen + texto ---
+   Mobile (default): apilado — imagen recortada a cuadrado arriba, texto abajo.
+   Desktop (>920px): dos columnas — imagen fija (sticky) a la izquierda,
+   texto con scroll propio a la derecha. En los dos casos el <h1> es el
+   primer elemento del bloque de texto (mismo orden en el DOM). */
+.post-split{display:block}
+
+.post-media{
+  width:100%;
+  aspect-ratio:1/1;         /* mobile: caja cuadrada */
+  overflow:hidden;
+  background:var(--bg2);
+}
+.post-media img{
+  width:100%;height:100%;
+  object-fit:cover;          /* recorta, nunca deforma */
+  display:block;
+}
+
+.post-content{padding:44px 28px 80px}
+.post-content .wrap{max-width:760px}
+
+.post-content h1{
   font-family:'Archivo Black','Inter',sans-serif;
   text-transform:none;
   font-size:clamp(1.7rem,4vw,2.6rem);
   line-height:1.12;
   letter-spacing:.2px;
-  margin-bottom:18px;
+  margin-bottom:14px;
 }
-.post-cover{
-  width:100%;border-radius:14px;overflow:hidden;
+.post-meta{font-size:.85rem;color:var(--text-dim);letter-spacing:.4px;text-transform:uppercase;margin-bottom:32px}
+
+@media(min-width:921px){
+  .post-split{
+    display:grid;
+    grid-template-columns:minmax(320px,42%) 1fr;
+    align-items:start;
+  }
+  .post-media{
+    aspect-ratio:auto;       /* desktop: alto = viewport, no cuadrado */
+    position:sticky;
+    top:0;
+    height:100vh;
+  }
+  .post-content{padding:120px 48px 100px}
+}
+
+/* imágenes incrustadas dentro del cuerpo (infografías, etc.) */
+.post-body img{
+  max-width:100%;
+  display:block;
+  margin:32px auto;
+  border-radius:10px;
   border:1px solid var(--panel-border);
-  margin-bottom:38px;
 }
-.post-cover img{width:100%;display:block}
 
 .post-body{font-size:1.05rem;color:var(--text)}
 .post-body p{margin-bottom:22px}
