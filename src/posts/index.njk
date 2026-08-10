@@ -3,14 +3,25 @@ layout: base.njk
 lang: es
 title: Blog
 description: "Posts sobre agilidad organizacional, liderazgo y transformación — desde la práctica, no desde el manual."
+pagination:
+  data: collections.posts_es
+  size: 9
+  alias: posts
+  reverse: true
+permalink: "/posts/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}"
 ---
 <div class="wrap wide">
   <span class="kicker reveal visible">Recursos</span>
   <h1 class="reveal visible" style="text-transform:uppercase">Blog</h1>
   <p class="lead" style="margin-top:14px">Posts sobre agilidad organizacional, liderazgo y transformación — desde la práctica, no desde el manual.</p>
 
+  <div class="view-toggle">
+    <span class="view-toggle-active">Tarjetas</span>
+    <a href="/posts/lista/">Solo listado</a>
+  </div>
+
   <div class="post-grid">
-    {% for post in collections.posts_es | reverse %}
+    {% for post in posts %}
     <a class="panel post-card reveal visible" href="{{ post.url }}">
       {% if post.data.image %}<img src="{{ post.data.image }}" alt="{{ post.data.imageAlt or '' }}">{% endif %}
       <div class="post-card-body">
@@ -21,4 +32,12 @@ description: "Posts sobre agilidad organizacional, liderazgo y transformación �
     </a>
     {% endfor %}
   </div>
+
+  {% if pagination.hrefs.length > 1 %}
+  <div class="pagination" aria-label="Paginación del blog">
+    {% if pagination.href.previous %}<a class="btn btn-outline" href="{{ pagination.href.previous }}">← Más recientes</a>{% endif %}
+    <span class="pagination-status">Página {{ pagination.pageNumber + 1 }} de {{ pagination.hrefs.length }}</span>
+    {% if pagination.href.next %}<a class="btn btn-outline" href="{{ pagination.href.next }}">Más antiguas →</a>{% endif %}
+  </div>
+  {% endif %}
 </div>
